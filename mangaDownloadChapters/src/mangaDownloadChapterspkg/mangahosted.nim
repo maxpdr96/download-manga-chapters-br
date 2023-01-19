@@ -1,7 +1,3 @@
-# This is just an example to get you started. Users of your hybrid library will
-# import this file by writing ``import mangaDownloadChapterspkg/submodule``. Feel free to rename or
-# remove this file altogether. You may create additional modules alongside
-# this file as required.
 import algorithm, httpclient, xmltree, nimquery, os, re
 from htmlparser import parseHtml
 
@@ -50,13 +46,13 @@ proc downloadChapters(url: string, html: XmlNode, title: string) =
     
 
 proc execManga*()=
-    echo "Digite o link do mangahosted: "
+    echo "Enter mangahosted link: "
     var url = readLine(stdin)
     var htmlBody = getHtmlBody(url)
     var title = getTitle(htmlBody)
     if createDirectory(title):
-        echo "Criou diretorio para o manga"
+        echo "Created a directory for the manga"
     else:
-        echo "Nao criou diretorio"
+        echo "Did not create directory"
     
     downloadChapters(url, htmlBody, title)
